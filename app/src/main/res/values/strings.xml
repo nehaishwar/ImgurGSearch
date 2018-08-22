@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">IGSearch</string>
+    <string name="search">Search Tag</string>
+    <string name="imgur_url">https://api.imgur.com/3/gallery/top/week/search?q=</string>
+    <string name="image_search">Imgur Gallery</string>
+    <string name="score_switch_title">Even Points Images</string>
+    <string name="welcome_msg">  Welcome to Imgur Gallery Search. \nTap search icon in Menu and enter items to search</string>
+</resources>

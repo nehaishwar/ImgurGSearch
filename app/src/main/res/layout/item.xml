@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+    <GridLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_row="1"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:id="@+id/photo"/>
+
+        <TextView
+            android:layout_row="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/title"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:layout_margin="8dp"
+            android:textAlignment="center" />
+
+   <LinearLayout android:orientation="horizontal"  android:layout_height="match_parent"
+       android:layout_width="match_parent" android:layout_rowWeight="1">
+
+        <TextView
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:id="@+id/post_date"
+            />
+
+        <TextView
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:id="@+id/image_count"
+            android:textAlignment="viewEnd"
+            />
+   </LinearLayout>
+    </GridLayout>
+</android.support.v7.widget.CardView>
