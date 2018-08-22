@@ -2,6 +2,7 @@ package com.example.test.imgurgsearch;
 
 import android.app.ActionBar;
 import android.app.SearchManager;
+import android.content.Context;
 import android.graphics.Rect;
 import android.opengl.Visibility;
 import android.support.v4.content.ContextCompat;
@@ -16,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -104,11 +106,11 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             });
-            searchView.setOnSearchClickListener(new View.OnClickListener() {
+            /*searchView.setOnSearchClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                 }
-            });
+            });*/
             EditText searchPlate = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
             searchPlate.setHint("Enter Search Tag");
             View searchPlateView = searchView.findViewById(android.support.v7.appcompat.R.id.search_plate);
@@ -118,11 +120,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
                     // use this method when query submitted
-                   // Toast.makeText(getApplicationContext(), query, Toast.LENGTH_SHORT).show();
                     fetchData(query);
                     countSwitchView.setChecked(false);
-
-                    return true;
+                    //searchView.clearChildFocus(searchView);
+                      return true;
                 }
 
                 @Override
@@ -206,7 +207,12 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     photoArrayList = photos;
-                    adapter.setData(photos);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            adapter.setData(photoArrayList);                        }
+                    });
+
                     Log.d(TAG," photos size "+photos.size());
                 } catch (JSONException exp) {
                     Log.e(TAG, " exp " + exp);
@@ -235,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
          countSwitchViewTitle.setVisibility(View.VISIBLE);
 
          RecyclerView rv = (RecyclerView)findViewById(R.id.rv_of_photos);
-         rv.requestFocus();
+        // rv.requestFocus();
          rv.setLayoutManager(new LinearLayoutManager(this));
          rv.setAdapter(adapter);
          rv.addItemDecoration(new RecyclerView.ItemDecoration() {
@@ -244,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
                     outRect.bottom = 16; // Gap of 16px
                 }
             });
-           rv.requestFocus();
+          // rv.requestFocus();
         }
 
         void updateData(boolean countSum){

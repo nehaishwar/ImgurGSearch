@@ -70,7 +70,7 @@ public class PhtoVHAdapter extends RecyclerView.Adapter<PhtoVHAdapter.PhotoVH>{
 
     public void setData(List<Photo> source){
         photos = source;
-        //notifyDataSetChanged();
+        notifyDataSetChanged();
     }
 
     public List<Photo> getData(){
